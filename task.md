@@ -1,0 +1,6 @@
+- `[ ]` Setup WSL environment (python, pandas, openpyxl)
+- `[ ]` Parse `Tabela-cBenef-SP.xlsx` to JSON format
+- `[ ]` Implement `cBenef` Matching Engine (CST + NCM + Legal Text)
+- `[ ]` Create validation rules (preventing invalid CST/cBenef pairs)
+- `[ ]` Develop a simple CLI for testing and integration
+- `[ ]` (Optional) Create a script for automatic synchronization from SEFAZ

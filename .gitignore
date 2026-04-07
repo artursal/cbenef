@@ -1,0 +1,17 @@
+# Ignorar relatórios de clientes e saídas com dados de faturamento
+*.csv
+*.xlsx
+*.txt
+
+# Ignorar o ambiente virtual e pacotes pesados do Linux/Windows
+venv/
+__pycache__/
+*.pyc
+
+# Ignorar arquivos temporários ou de lock do OS
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Se você gerar logs da API (nohup), eles não sobem
+*.log
