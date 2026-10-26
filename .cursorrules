@@ -1,0 +1,32 @@
+# DOCUMENTO DE DIRETRIZES TÉCNICAS E AMBIENTE (AI AGENT RULES)
+
+**Para:** Inteligências Artificiais e Agentes de Código operando neste repositório.
+**Projeto:** Automação Fiscal cBenef SP - ERP Thor
+**Data de Criação:** Abril/2026
+
+⚠️ **LEIA ISSO ANTES DE TOMAR QUALQUER AÇÃO NESTE REPOSITÓRIO** ⚠️
+
+Caro(a) Agente,
+Se você foi inicializado(a) neste projeto, saiba que o Workspace não é nativo Windows convencional. O ecossistema roda inteiramente baseado no **Windows Subsystem for Linux (WSL)**, possuindo integrações complexas de rede com o banco de produção.
+
+## 1. Regra Absoluta do WSL e Terminal
+1. Você **JAMAIS** deve tentar instalar pacotes pip, executar python ou rodar binários de sistema usando o terminal comum do Windows/PowerShell (como `python app.py` ou `pip install ...`). Se você fizer isso, vai destruir as dependências ou enfrentar erros sem sentido.
+2. Todo acionamento de código precisa ser roteado para a máquina Linux embutida!
+3. Prefixe todos os comandos na tela de execução com `wsl` (Exemplo: `wsl ls -la`, `wsl cat arquivo`).
+4. Para chamar python, use estritamente o ambiente virtual que já está isolado e rodando redondo no Ubuntu através da rota:
+   ```bash
+   wsl ./venv/bin/python3 nome_do_script.py
+   ```
+   *Se precisar instalar apêndices, também aponte pro venv do WSL*: `wsl ./venv/bin/pip install {pacote}`
+
+## 2. Padrão de Senhas e Segurança de Commit
+Este projeto extrai dados diretos da nuvem produtiva do PostgresSQL do Thor ERP em domínios públicos (ex: `armata.aas.eti.br`).
+- **NUNCA DEIXE AS CREDENCIAIS NO CÓDIGO!** Você as verá como `DB_USER` e `DB_PASS` nos arquivos python. Se você precisar reconectar o motor para testar alguma extração a pedido do humano, ele irá te fornecer a senha verdadeira off-the-record. Reinjetá-las e testar é permitido, **MAS** antes de efetuar commits no Git, elas devem obrigatoriamente retornar à string mascarada.
+- Adicionalmente, todos os contábeis que geramos estão protegidos no `.gitignore`. Extensões `.csv` e `.xlsx` jamais sobem!
+
+## 3. Entendendo a Arquitetura já Desenvolvida
+1. A extração das Leis fica no Json local lido da fazenda SEFAZ. O Script mestre que cruza regras chama-se `cbenef_engine.py`. NUNCA corrompa as linhas de verificação das CFOPs (`5901, 6901...`) porque elas ignoram a tabela de excel estrita e focam em Leis Aduaneiras/Industriais que configuramos com sangue e suor!
+2. A Tática do `app.py`: A integração ERP opera via API local na porta 5000 (`/suggest`).
+3. As Malhas Finas: Quando for invocado para rodar as "Auditorias" (`run_all_audits.py` ou `audit_erros_fiscais.py`), garanta que o código não está suprimindo notas tributadas da família 3000 (Importação Internacional). Importações usam CST 00 e exigem carimbo cBenef de ICMS retido!
+
+Siga esses mandamentos ou morrerá afogado(a) no prompt do Sistema Operacional. Bom trabalho!

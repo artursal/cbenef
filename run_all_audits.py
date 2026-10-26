@@ -52,9 +52,10 @@ def generate_audit(db_name):
                 suggestion = engine.suggest(cst, "", ncm=ncm, cfop=cfop)
                 val_sug = str(suggestion.get('code') or "SEM CBENEF")
                 
-                # Omite lixo (CST 00 e sem cbenef) para o relatorio ser enxuto
-                if cst == '00' or val_sug == "SEM CBENEF":
-                    continue
+                # Omite lixo (CST 00 e sem cbenef) para o relatorio ser enxuto (Exceto IMPORTACOES CFOP 3)
+                if not cfop.startswith('3'):
+                    if cst == '00' or val_sug == "SEM CBENEF":
+                        continue
                 
                 val_nota = str(data.get('cnnota') or "")
                 val_data = str(data.get('data_nota') or "")
@@ -78,14 +79,7 @@ def generate_audit(db_name):
 
 if __name__ == "__main__":
     bases = [
-        'solutionsp', 
-        'multinstdb', 
-        'comfitasdb', 
-        'ecotechdb', 
-        'juncaodb', 
-        'eletrocampdb', 
-        'sulcompdb', 
-        'tavaresdb'
+        'solutionsp'
     ]
     for b in bases:
         generate_audit(b)
