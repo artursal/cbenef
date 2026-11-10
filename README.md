@@ -1,6 +1,13 @@
 # 📊 Sistema Automático de Inteligência Fiscal - cBenef (SP)
 
-**Status do Projeto:** `Produção - Estável` | **Integração ERP:** `Thor` | **Matrizes Homologadas:** `8 Bases PostgreSQL`
+> ## ⛔ PROJETO DESCONTINUADO E INATIVO (desde 10/11/2026)
+> Este repositório **não deve mais ser executado nem integrado ao ERP**. A resolução de cBenef foi
+> absorvida pelo projeto `galatea-api-fiscal` (`app/services/cbenef_resolver_service.py` e
+> `app/services/cbenef_updater_service.py`), que aplica a Tabela cBenef SP vigente, a regra de
+> operação por CFOP (art. 402 do RICMS/SP + Portaria CAT 22/2007) e as regras de produto por empresa.
+> O `app.py` aborta a inicialização de propósito. Não reativar sem decisão expressa do Arquiteto.
+
+**Status do Projeto:** `DESCONTINUADO / INATIVO` | **Substituído por:** `galatea-api-fiscal` | **Integração ERP:** `removida`
 
 O **cBenef Engine** é um autômato fiscal projetado para ler, interpretar e aplicar as regras da Secretaria da Fazenda do Estado de São Paulo (SEFAZ-SP) em Notas Fiscais Eletrônicas (NFe e NFCe - Modelos 55 e 65). 
 Sua função primária é **substituir a digitação humana** na classificação da tag XML `<cBenef>`, garantindo que operações complexas aduaneiras e de suspensão tributária nunca sofram multas por preenchimento errado no faturamento.

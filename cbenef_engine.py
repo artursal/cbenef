@@ -1,3 +1,10 @@
+"""Motor heurístico legado de sugestão de cBenef (SP).
+
+DESCONTINUADO E INATIVO desde 10/11/2026. Mantido apenas como registro histórico;
+a resolução vigente está em galatea-api-fiscal (app/services/cbenef_resolver_service.py).
+Não usar este motor para decisão fiscal.
+"""
+
 import json
 import re
 import roman

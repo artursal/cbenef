@@ -1,5 +1,9 @@
 # Especificação de Projeto: Motor de Inteligência Fiscal cBenef (São Paulo)
 
+> ## ⛔ PROJETO DESCONTINUADO E INATIVO (desde 10/11/2026)
+> Substituído por `galatea-api-fiscal` (`CbenefResolverService` / `CbenefUpdaterService`).
+> Este documento é mantido apenas como registro histórico. Não executar nem integrar.
+
 ## 📌 Visão Geral
 O projeto **cBenef Engine** é uma API de Inteligência Artificial e heurística desenhada especificamente para automatizar com **100% de autonomia** o preenchimento da tag `<cBenef>` (Código de Benefício Fiscal) nas NFes e NFCes (Modelos 55 e 65) autorizadas no estado de São Paulo pela Secretaria da Fazenda (SEFAZ). 
 
